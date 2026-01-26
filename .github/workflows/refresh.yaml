@@ -22,7 +22,7 @@ jobs:
       - uses: astral-sh/setup-uv@v4
 
       - name: Install s2cli
-        run: uv tool install s2cli
+        run: uv tool install git+https://github.com/mhalle/s2cli.git
 
       - name: Refresh citation tree
         run: s2cli citetree add --config citetree.yaml --db citations.db
