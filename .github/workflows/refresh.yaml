@@ -1,0 +1,49 @@
+name: Refresh Citation Tree
+
+on:
+  push:
+    paths:
+      - 'citetree.yaml'
+
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday at midnight UTC
+
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install s2cli
+        run: uv tool install s2cli
+
+      - name: Refresh citation tree
+        run: s2cli citetree add --config citetree.yaml --db citations.db
+        env:
+          S2_API_KEY: ${{ secrets.S2_API_KEY }}
+
+      - name: Commit updated database
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Refresh citation tree"
+          file_pattern: citations.db
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE=$(date -u +%Y-%m-%d)
+          # Delete existing release if it exists
+          gh release delete latest --yes || true
+          # Create new release with database
+          gh release create latest citations.db \
+            --title "Latest citation database" \
+            --notes "Updated: $DATE" \
+            --latest
