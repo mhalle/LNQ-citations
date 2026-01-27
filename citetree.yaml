@@ -14,12 +14,13 @@ influential_only: false
 #   - arXiv: "arXiv:1706.03762"
 #   - Semantic Scholar: "649def34f8be52c8b66281af98ae884c09aef38b"
 papers:
-
-
+  - id: "PMID:6609588"
+    title: "Normal mediastinal lymph node size and number: CT and anatomic study (Glazer 1984)"
   - id: "PMID:6609589"
-
+    title: "The mediastinum in non-small cell lung cancer: CT-surgical correlation (Glazer 1984)"
   - id: "PMID:9187199"
-
+    title: "Regional lymph node classification for lung cancer staging (Mountain & Dresler 1997)"
   - id: "PMID:19357537"
+    title: "IASLC Lung Cancer Staging Project: New International Lymph Node Map (Rusch 2009)"
 
 
