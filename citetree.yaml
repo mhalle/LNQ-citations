@@ -1,11 +1,11 @@
 # LNQ-citations - Citation Tree Configuration
-# Citation tree for lymph node quantification in lung cancer staging
+# Citation tree for lymph node quantification and computational analysis
 
 # Crawl settings
 depth: 2
 direction: citations
-limit: 1000
-influential_only: false
+limit: 5000  # total paper budget (divided across levels and sources)
+influential_only: true
 
 # Seed papers for the citation tree
 # Add papers using any supported ID format:
@@ -26,5 +26,14 @@ papers:
     title: "Regional lymph node classification for lung cancer staging (Mountain & Dresler 1997)"
   - id: "PMID:19357537"
     title: "IASLC Lung Cancer Staging Project: New International Lymph Node Map (Rusch 2009)"
+  # Computational lymph node analysis
+  - id: "PMID:21968722"
+    title: "Automatic detection and segmentation of lymph nodes from CT data (Barbu 2012)"
+  - id: "PMID:23246185"
+    title: "Lymph node detection and segmentation in chest CT using discriminative learning (Feulner 2013)"
+  - id: "PMID:25333158"
+    title: "2.5D CNN for lymph node detection - NIH dataset (Roth 2014)"
+  - id: "arXiv:2408.10069"
+    title: "LNQ 2023 challenge: Benchmark of weakly-supervised techniques for mediastinal lymph node quantification"
 
 
